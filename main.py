@@ -9,6 +9,7 @@ global lista_con_ordenes
 global titulo, num_a_buscar, resultado_busqueda, lista_ordenadas__enteros
 
 
+lista_numeros_int = []
 lista_ordenadas__enteros = []
 resultado_busqueda = 0
 num_a_buscar = 0
@@ -22,6 +23,8 @@ numeros = []
 lista_numeros = []
 cadena = []
 orden = []
+
+
 
 def crearReporte():
 
@@ -157,21 +160,29 @@ while not salir:
 
         ruta = leerArchivo()
         archivo = open(ruta, "r")
-        contador = 0
+        contador_split = 0
         for linea in archivo.readlines():
-             
+            lista_numeros_int = []
             nombre = linea.split('=')
             titulo.append(nombre[0])
             numeros = nombre[1].split(' ')
-            lista_numeros.append(numeros[0].split(','))
+            
+            lista_unica = numeros[0].split(',')
+            
+            for num in lista_unica:
+                a = int(num)
+                lista_numeros_int.append(a)
+            
+            print(lista_numeros_int)
+            lista_numeros.append(lista_numeros_int)
             lista_numeros_sin_ordenar.append(numeros[0].split(','))
             numeros[len(cadena) - 1] = numeros[len(cadena) - 1].rstrip('\n')
             orden = ",".join(numeros[1:]).split(',')
             lista_con_ordenes.append(orden)
+            ordenamientoBurbuja(lista_numeros[contador_split])
+            contador_split += 1
+                
 
-            ordenamientoBurbuja(lista_numeros[contador])
-            contador += 1
-            
     elif opcion == 2:
         print ("Desplegar listas ordenadas:")
 
@@ -186,7 +197,7 @@ while not salir:
 
 
     elif opcion == 3:
-        print("Desplegar búsquedas:\n")
+        print("Desplegar búsquedas:")
         contador_busquedas = 0
 
         for i in lista_con_ordenes:
