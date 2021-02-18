@@ -144,7 +144,7 @@ salir = False
 opcion = 0
  
 while not salir:
- 
+    print()
     print ("1. Cargar archivo de entrada")
     print ("2. Desplegar listas ordenadas")
     print ("3. Desplegar búsquedas")
@@ -173,7 +173,6 @@ while not salir:
                 a = int(num)
                 lista_numeros_int.append(a)
             
-            print(lista_numeros_int)
             lista_numeros.append(lista_numeros_int)
             lista_numeros_sin_ordenar.append(numeros[0].split(','))
             numeros[len(cadena) - 1] = numeros[len(cadena) - 1].rstrip('\n')
